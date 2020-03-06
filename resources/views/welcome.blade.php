@@ -25,7 +25,6 @@
             }
 
             .flex-center {
-                align-items: center;
                 display: flex;
                 justify-content: center;
             }
@@ -40,22 +39,23 @@
                 top: 18px;
             }
 
-            .content {
-                text-align: center;
-            }
-
             .title {
                 font-size: 84px;
             }
 
             .links > a {
                 color: #636b6f;
-                padding: 0 25px;
+                padding: 10px 25px;
                 font-size: 13px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+                display: block;
+            }
+
+            a.red-border {
+                border: 1px solid red;
             }
 
             .m-b-md {
@@ -70,7 +70,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/home') }}">Page only for logged in</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -78,12 +78,13 @@
                             <a href="{{ route('register') }}">Register</a>
                         @endif
                     @endauth
+                    <a class="red-border" href="{{ url('/submit') }}">Add link</a>
                 </div>
             @endif
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    List of links
                 </div>
 
                 <div class="links">
